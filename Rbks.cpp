@@ -1,13 +1,7 @@
-#include 'std.fx'
-#include <iomanip>
-#include <iostream>
-#include <math.h>
-
-using namespace std;
-
-int main() {
-
 /*
+Author: Majed Elsaadi
+Start Date: November 11, 2019
+
 Note: Since this is a test, we will be working with the beginners method:
 	White Cross
 	White Corners
@@ -47,6 +41,55 @@ For example,
 	White: 28 
 	Blue 54
 */
+
+#include 'std.fx'
+#include <iomanip>
+#include <iostream>
+#include <math.h>
+
+using namespace std;
+
+// Matrix Rotation Funciton - ClockWise
+int
+matrotcw (int T[3][3],int k1, int k2, int k3) // Rotates the matrix by 90 Degrees ClockWise
+{
+  int F[3][3];			// Temp Matrix
+  for (int i = 0; i < 3; i++){	// Set F = T
+    for (int j = 0; j < 3; j++){
+	  F[i][j] = T[i][j];
+	  }
+  }
+    for (int j = 0; j < 3; j++)
+	{
+	  T[0][j] = F[k1][0];
+	  k1--;
+	}
+    for (int i = 1; i < 3; i++)
+    {
+      T[i][2] = F[0][k2];
+      k2++;
+    }
+  for (int j = 1; j >= 0; j--)
+    {
+      T[2][j] = F[k3][2];
+      k3++;
+    }
+  T[1][0] = F[2][1];
+}
+
+// Matrix Output Function
+int matout(T[3][3]){
+for(int i =0; i < 3; i++){
+for(int j =0; j < 3; j++){
+		cout << T[i][j] << " ";
+	}
+	cout << endl;
+}
+
+}
+
+// Main Function
+int main() {
 
 int RedFace[3][3] = {
 	{1,2,3}
@@ -307,7 +350,7 @@ for(int r = 0; r < 3; r++){ // Looking for Red white peice (8,29)
 	}
 }
 
-stage3:
+stage3: 
 switch(stemp2){
 	case 1: 
 }
