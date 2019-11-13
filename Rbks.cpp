@@ -50,8 +50,7 @@ For example,
 using namespace std;
 
 // Matrix Rotation Funciton - ClockWise
-int
-matrotcw (int T[3][3],int k1, int k2, int k3) // Rotates the matrix by 90 Degrees ClockWise
+int matrotcw (int T[3][3], int k1, int k2, int k3) // Rotates the matrix by 90 Degrees ClockWise
 {
   int F[3][3];			// Temp Matrix
   for (int i = 0; i < 3; i++){	// Set F = T
@@ -77,15 +76,189 @@ matrotcw (int T[3][3],int k1, int k2, int k3) // Rotates the matrix by 90 Degree
   T[1][0] = F[2][1];
 }
 
+int matrotccw (int T[3][3], int k1, int k2, int k3) // Rotates the matrix by 90 Degrees Counter-Clockwise
+{
+  int F[3][3];
+  for (int i = 0; i < 3; i++){
+    for (int j = 0; j < 3; j++){
+	  F[i][j] = T[i][j];
+	  }
+  }
+    for (int j = 2; j >= 0; j--)
+	{
+	  T[0][j] = F[k1][2];
+	  k1--;
+	}
+	for (int i = 1; i < 3; i++)
+    {
+      T[i][0] = F[0][k2];
+      k2--;
+    }
+  for (int j = 1; j < 3; j++)
+    {
+      T[2][j] = F[k3][0];
+      k3++;
+    }
+  T[1][2] = F[2][1];
+}
+
 // Matrix Output Function
-int matout(T[3][3]){
-for(int i =0; i < 3; i++){
-for(int j =0; j < 3; j++){
+int matout(int T[3][3]){
+	for(int i =0; i < 3; i++){
+	for(int j =0; j < 3; j++){
 		cout << T[i][j] << " ";
 	}
 	cout << endl;
 }
+}
 
+int matsearch(int peice1, int peice2, int red, int orange, int yellow, int white, int green, int blue){
+stage1:
+	for(int r = 0; r < 3; r++){ // Looking for Red white peice (8,29)
+	for(int c = 0; c < 3; c++){
+		if(red[r][c] == peice1){
+			Rtemp1 = r;
+			Ctemp1 = c;
+			Stemp1 = 1;
+			for(int i =0; i < 3; i++){
+				for(int j =0; j < 3; j++){
+					Atemp1[i][j] = RedFace[r][c];
+				}
+			}
+			goto stage2;
+		}
+		else if(orange[r][c] == 29){
+			Rtemp1 = r;
+			Ctemp1 = c;
+			Stemp1 = 2;
+			for(int i =0; i < 3; i++){
+				for(int j =0; j < 3; j++){
+					Atemp1[i][j] = OrangeFace[r][c];
+				}
+			}
+			goto stage2;
+		}
+		else if(Yellow[r][c] == 29){
+			Rtemp1 = r;
+			Ctemp1 = c;
+			Stemp1 = 3;
+			for(int i =0; i < 3; i++){
+				for(int j =0; j < 3; j++){
+					Atemp1[i][j] = YellowFace[r][c];
+				}
+			}
+			goto stage2;
+		}
+		else if(White[r][c] == 29){
+			Rtemp1 = r;
+			Ctemp1 = c;
+			Stemp1 = 4;
+			for(int i =0; i < 3; i++){
+				for(int j =0; j < 3; j++){
+					Atemp1[i][j] = WhiteFace[r][c];
+				}
+			}
+			goto stage2;
+		}
+		else if(Green[r][c] == 29){
+			Rtemp1 = r;
+			Ctemp1 = c;
+			Stemp1 = 5;
+			for(int i =0; i < 3; i++){
+				for(int j =0; j < 3; j++){
+					Atemp1[i][j] = GreenFace[r][c];
+				}
+			}
+			goto stage2;
+		}
+		else if(Blue[r][c] == 29){
+			Rtemp1 = r;
+			Ctemp1 = c;
+			Stemp1 = 6;
+			for(int i =0; i < 3; i++){
+				for(int j =0; j < 3; j++){
+					Atemp1[i][j] = BlueFace[r][c];
+				}
+			}
+			goto stage2;
+		}
+	}
+}
+stage2:
+for(int r = 0; r < 3; r++){ // Looking for Red white peice (8,29)
+	for(int c = 0; c < 3; c++){
+		if(RedFace[r][c] == 8){
+			Rtemp2 = r;
+			Ctemp2 = c;
+			Stemp2 = 1;
+			for(int i =0; i < 3; i++){
+				for(int j =0; j < 3; j++){
+					Atemp2[i][j] = RedFace[r][c];
+				}
+			}
+			goto stage3;
+		}
+		else if(OrangeFace[r][c] == 8){
+			Rtemp2 = r;
+			Ctemp2 = c;
+			Stemp2 = 2;
+			for(int i =0; i < 3; i++){
+				for(int j =0; j < 3; j++){
+					Atemp2[i][j] = OrangeFace[r][c];
+				}
+			}
+			goto stage3;
+		}
+		else if(YellowFace[r][c] == 8){
+			Rtemp2 = r;
+			Ctemp2 = c;
+			Stemp2 = 3;
+			for(int i =0; i < 3; i++){
+				for(int j =0; j < 3; j++){
+					Atemp2[i][j] = YellowFace[r][c];
+				}
+			}
+			goto stage3;
+		}
+		else if(WhiteFace[r][c] == 8){
+			Rtemp2 = r;
+			Ctemp2 = c;
+			Stemp2 = 4;
+			for(int i =0; i < 3; i++){
+				for(int j =0; j < 3; j++){
+					Atemp2[i][j] = WhiteFace[r][c];
+				}
+			}
+			goto stage3;
+		}
+		else if(GreenFace[r][c] == 8){
+			Rtemp2 = r;
+			Ctemp2 = c;
+			Stemp2 = 5;
+			for(int i =0; i < 3; i++){
+				for(int j =0; j < 3; j++){
+					Atemp2[i][j] = GreenFace[r][c];
+				}
+			}
+			goto stage3;
+		}
+		else if(BlueFace[r][c] == 8){
+			Rtemp2 = r;
+			Ctemp2 = c;
+			Stemp2 = 6;
+			for(int i =0; i < 3; i++){
+				for(int j =0; j < 3; j++){
+					Atemp2[i][j] = BlueFace[r][c];
+				}
+			}
+			goto stage3;
+		}
+	}
+}
+stage3: 
+switch(stemp2){
+	case 1: 
+}
 }
 
 // Main Function
@@ -202,158 +375,6 @@ for(int i = 1; i <= 6; i++){
 }
 
 cout << "Processing Data..." << endl;
-
-
-// Solving Starts Here
-
-stage1:
-for(int r = 0; r < 3; r++){ // Looking for Red white peice (8,29)
-	for(int c = 0; c < 3; c++){
-		if(RedFace[r][c] == 29){
-			Rtemp1 = r;
-			Ctemp1 = c;
-			Stemp1 = 1;
-			for(int i =0; i < 3; i++){
-				for(int j =0; j < 3; j++){
-					Atemp1[i][j] = RedFace[r][c];
-				}
-			}
-			goto stage2;
-		}
-		else if(OrangeFace[r][c] == 29){
-			Rtemp1 = r;
-			Ctemp1 = c;
-			Stemp1 = 2;
-			for(int i =0; i < 3; i++){
-				for(int j =0; j < 3; j++){
-					Atemp1[i][j] = OrangeFace[r][c];
-				}
-			}
-			goto stage2;
-		}
-		else if(YellowFace[r][c] == 29){
-			Rtemp1 = r;
-			Ctemp1 = c;
-			Stemp1 = 3;
-			for(int i =0; i < 3; i++){
-				for(int j =0; j < 3; j++){
-					Atemp1[i][j] = YellowFace[r][c];
-				}
-			}
-			goto stage2;
-		}
-		else if(WhiteFace[r][c] == 29){
-			Rtemp1 = r;
-			Ctemp1 = c;
-			Stemp1 = 4;
-			for(int i =0; i < 3; i++){
-				for(int j =0; j < 3; j++){
-					Atemp1[i][j] = WhiteFace[r][c];
-				}
-			}
-			goto stage2;
-		}
-		else if(GreenFace[r][c] == 29){
-			Rtemp1 = r;
-			Ctemp1 = c;
-			Stemp1 = 5;
-			for(int i =0; i < 3; i++){
-				for(int j =0; j < 3; j++){
-					Atemp1[i][j] = GreenFace[r][c];
-				}
-			}
-			goto stage2;
-		}
-		else if(BlueFace[r][c] == 29){
-			Rtemp1 = r;
-			Ctemp1 = c;
-			Stemp1 = 6;
-			for(int i =0; i < 3; i++){
-				for(int j =0; j < 3; j++){
-					Atemp1[i][j] = BlueFace[r][c];
-				}
-			}
-			goto stage2;
-		}
-	}
-}
-
-stage2:
-for(int r = 0; r < 3; r++){ // Looking for Red white peice (8,29)
-	for(int c = 0; c < 3; c++){
-		if(RedFace[r][c] == 8){
-			Rtemp2 = r;
-			Ctemp2 = c;
-			Stemp2 = 1;
-			for(int i =0; i < 3; i++){
-				for(int j =0; j < 3; j++){
-					Atemp2[i][j] = RedFace[r][c];
-				}
-			}
-			goto stage3;
-		}
-		else if(OrangeFace[r][c] == 8){
-			Rtemp2 = r;
-			Ctemp2 = c;
-			Stemp2 = 2;
-			for(int i =0; i < 3; i++){
-				for(int j =0; j < 3; j++){
-					Atemp2[i][j] = OrangeFace[r][c];
-				}
-			}
-			goto stage3;
-		}
-		else if(YellowFace[r][c] == 8){
-			Rtemp2 = r;
-			Ctemp2 = c;
-			Stemp2 = 3;
-			for(int i =0; i < 3; i++){
-				for(int j =0; j < 3; j++){
-					Atemp2[i][j] = YellowFace[r][c];
-				}
-			}
-			goto stage3;
-		}
-		else if(WhiteFace[r][c] == 8){
-			Rtemp2 = r;
-			Ctemp2 = c;
-			Stemp2 = 4;
-			for(int i =0; i < 3; i++){
-				for(int j =0; j < 3; j++){
-					Atemp2[i][j] = WhiteFace[r][c];
-				}
-			}
-			goto stage3;
-		}
-		else if(GreenFace[r][c] == 8){
-			Rtemp2 = r;
-			Ctemp2 = c;
-			Stemp2 = 5;
-			for(int i =0; i < 3; i++){
-				for(int j =0; j < 3; j++){
-					Atemp2[i][j] = GreenFace[r][c];
-				}
-			}
-			goto stage3;
-		}
-		else if(BlueFace[r][c] == 8){
-			Rtemp2 = r;
-			Ctemp2 = c;
-			Stemp2 = 6;
-			for(int i =0; i < 3; i++){
-				for(int j =0; j < 3; j++){
-					Atemp2[i][j] = BlueFace[r][c];
-				}
-			}
-			goto stage3;
-		}
-	}
-}
-
-stage3: 
-switch(stemp2){
-	case 1: 
-}
 
 
 
