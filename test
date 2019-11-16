@@ -1,0 +1,77 @@
+/******************************************************************************
+
+                              Online C++ Compiler.
+               Code, Compile, Run and Debug C++ program online.
+Write your code in this editor and press "Run" button to compile and execute it.
+
+*******************************************************************************/
+#include <iostream>
+#include <iomanip>
+
+using namespace std;
+
+
+int main()
+{
+int F1[3];
+int F2[3];
+    
+int T1[3][3] = {
+	{1,2,3},
+	{4,5,6},
+	{7,8,9}
+};
+int T2[3][3] = {
+	{10,11,12},
+	{13,14,15},
+	{16,17,18}
+};
+int T3[3][3] = {
+	{19,20,21},
+	{22,23,24},
+	{25,26,27}
+};
+int T4[3][3] = {
+	{28,29,30},
+	{31,32,33},
+	{34,35,36}
+};
+for(int j = 0; j < 3; j++){
+	  			F1[j] = T1[2][j];
+	  			T1[2][j] = T4[j][0];
+	  			F2[j] = T2[j][2];
+	  			T2[j][2] = F1[j];
+	  			F1[j] = T3[0][j];
+	  			T3[0][j] = F2[j];
+	  			T4[j][0] = F1[j];
+	  	}
+	  	
+	  	for(int i =0; i < 3; i++){
+	for(int j =0; j < 3; j++){
+		cout << T1[i][j] << " ";
+	}
+	cout << endl;
+	  	}
+		cout << endl;
+	for(int i =0; i < 3; i++){
+	for(int j =0; j < 3; j++){
+		cout << T2[i][j] << " ";
+	}
+	cout << endl;
+	}
+		cout << endl;
+	for(int i =0; i < 3; i++){
+	for(int j =0; j < 3; j++){
+		cout << T3[i][j] << " ";
+	}
+	cout << endl;
+	}
+		cout << endl;
+	for(int i =0; i < 3; i++){
+	for(int j =0; j < 3; j++){
+		cout << T4[i][j] << " ";
+	}
+	cout << endl;
+	}
+		cout << endl;
+}

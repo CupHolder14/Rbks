@@ -1,4 +1,4 @@
-/*
+                                                                 /*
 Author: Majed Elsaadi
 Start Date: November 11, 2019
 
@@ -50,16 +50,15 @@ For example,
 using namespace std;
 
 // Matrix Rotation Funciton - ClockWise
-int matrotcw (int T[3][3], int k1, int k2, int k3) // Rotates the matrix by 90 Degrees ClockWise
+int matrotcw (int T[3][3],int side, int k1, int k2, int k3) // Rotates the matrix by 90 Degrees ClockWise
 {
-  int F[3][3];			// Temp Matrix
-  for (int i = 0; i < 3; i++){	// Set F = T
+	int F[3][3];			// Temp Matrix
+  	for (int i = 0; i < 3; i++){	// Set F = T
+    	for (int j = 0; j < 3; j++){
+	  		F[i][j] = T[i][j];
+	  	}
+  	}
     for (int j = 0; j < 3; j++){
-	  F[i][j] = T[i][j];
-	  }
-  }
-    for (int j = 0; j < 3; j++)
-	{
 	  T[0][j] = F[k1][0];
 	  k1--;
 	}
@@ -76,7 +75,7 @@ int matrotcw (int T[3][3], int k1, int k2, int k3) // Rotates the matrix by 90 D
   T[1][0] = F[2][1];
 }
 
-int matrotccw (int T[3][3], int k1, int k2, int k3) // Rotates the matrix by 90 Degrees Counter-Clockwise
+int matrotccw (int T[3][3], int k1, int k2, int k3, int side, int T1[3][3], int T2[3][3], int T3[3][3], int T4[3][3]) // Rotates the matrix by 90 Degrees Counter-Clockwise
 {
   int F[3][3];
   for (int i = 0; i < 3; i++){
@@ -100,7 +99,32 @@ int matrotccw (int T[3][3], int k1, int k2, int k3) // Rotates the matrix by 90 
       k3++;
     }
   T[1][2] = F[2][1];
+
+  int F1[3];
+  int F2[3];
+
+   switch(side){
+  		case 1:	
+	  		for(int j = 0; j < 3; j++){
+	  			F1[j] = T1[2][j];
+	  			T1[2][j] = T4[j][0];
+	  			F2[j] = T2[j][2];
+	  			T2[j][2] = F1[j];
+	  			F1[j] = T3[0][j];
+	  			T4[j][0] = F1[j];
+	  		}
+	  	case 2:
+
+	  	case 3:
+	  	
+	  	case 4:
+	  	
+	  	case 5:
+	  	
+	  	case 6:
 }
+}
+
 
 // Matrix Output Function
 int matout(int T[3][3]){
@@ -265,35 +289,35 @@ switch(stemp2){
 int main() {
 
 int RedFace[3][3] = {
-	{1,2,3}
-	{4,5,6}
+	{1,2,3},
+	{4,5,6},
 	{7,8,9}
-}
+};
 int OrangeFace[3][3] = {
-	{10,11,12}
-	{13,14,15}
+	{10,11,12},
+	{13,14,15},
 	{16,17,18}
-}
+};
 int YellowFace[3][3] = {
-	{19,20,21}
-	{22,23,24}
+	{19,20,21},
+	{22,23,24},
 	{25,26,27}
-}
+};
 int WhiteFace[3][3] = {
-	{28,29,30}
-	{31,32,33}
+	{28,29,30},
+	{31,32,33},
 	{34,35,36}
-}
+};
 int GreenFace[3][3] = {
-	{37,38,39}
-	{40,41,42}
+	{37,38,39},
+	{40,41,42},
 	{43,44,45}
-}
+};
 int BlueFace[3][3] = {
-	{46,47,48}
-	{49,50,51}
+	{46,47,48},
+	{49,50,51},
 	{52,53,54}
-}
+};
 
 int temp = 0;
 
