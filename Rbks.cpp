@@ -50,7 +50,13 @@ For example,
 using namespace std;
 
 // Matrix Rotation Funciton - ClockWise
-int matrotcw (int T[3][3],int side, int k1, int k2, int k3)
+/*
+T[3][3] = Side to rotate
+k1 = 2
+k2 = 1
+k3 = 1
+*/
+int matrotcw (int T[3][3], int k1, int k2, int k3, , int T1[3][3], int T2[3][3], int T3[3][3], int T4[3][3])
 {
 	int F[3][3];			// Temp Matrix
   	for (int i = 0; i < 3; i++){	// Set F = T
@@ -78,18 +84,19 @@ int matrotcw (int T[3][3],int side, int k1, int k2, int k3)
   	int F2[3];
 
 	for(int j = 0; j < 3; j++){
-		F1[j] = T1[2][j];
-		T1[2][j] = T3[j][0];
-		F2[j] = T2[0][j];
-		T2[0][j] = T4[j][2];
+		F1[j] = T3[j][0];
+		T3[j][0] = T1[2][j];
+		F2[j] = T4[j][2];
+		T4[j][2] = T2[0][j];
 	}
 	for(int k = 2; k >= 0; k--){
 		int j = 2 - k;
-		T3[j][0] = F2[k];
-		T4[j][2] = F1[k];
+		T1[2][j] = F2[k];
+		T2[0][j] = F1[k];
 	}
 }
 
+// Matrix Rotation Function - Counter ClockWise
 int matrotccw (int T[3][3], int k1, int k2, int k3, int T1[3][3], int T2[3][3], int T3[3][3], int T4[3][3]) // Rotates the matrix by 90 Degrees Counter-Clockwise
 {
   int F[3][3];
@@ -132,7 +139,6 @@ int matrotccw (int T[3][3], int k1, int k2, int k3, int T1[3][3], int T2[3][3], 
 
 }
 
-
 // Matrix Output Function
 int matout(int T[3][3]){
 	for(int i =0; i < 3; i++){
@@ -143,6 +149,7 @@ int matout(int T[3][3]){
 }
 }
 
+// Matrix Search function
 int matsearch(int peice1, int peice2, int red, int orange, int yellow, int white, int green, int blue){
 stage1:
 	for(int r = 0; r < 3; r++){ // Looking for Red white peice (8,29)
