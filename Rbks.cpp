@@ -50,7 +50,7 @@ For example,
 using namespace std;
 
 // Matrix Rotation Funciton - ClockWise
-int matrotcw (int T[3][3],int side, int k1, int k2, int k3) // Rotates the matrix by 90 Degrees ClockWise
+int matrotcw (int T[3][3],int side, int k1, int k2, int k3)
 {
 	int F[3][3];			// Temp Matrix
   	for (int i = 0; i < 3; i++){	// Set F = T
@@ -73,56 +73,63 @@ int matrotcw (int T[3][3],int side, int k1, int k2, int k3) // Rotates the matri
       k3++;
     }
   T[1][0] = F[2][1];
+
+    int F1[3];
+  	int F2[3];
+
+	for(int j = 0; j < 3; j++){
+		F1[j] = T1[2][j];
+		T1[2][j] = T3[j][0];
+		F2[j] = T2[0][j];
+		T2[0][j] = T4[j][2];
+	}
+	for(int k = 2; k >= 0; k--){
+		int j = 2 - k;
+		T3[j][0] = F2[k];
+		T4[j][2] = F1[k];
+	}
 }
 
-int matrotccw (int T[3][3], int k1, int k2, int k3, int side, int T1[3][3], int T2[3][3], int T3[3][3], int T4[3][3]) // Rotates the matrix by 90 Degrees Counter-Clockwise
+int matrotccw (int T[3][3], int k1, int k2, int k3, int T1[3][3], int T2[3][3], int T3[3][3], int T4[3][3]) // Rotates the matrix by 90 Degrees Counter-Clockwise
 {
   int F[3][3];
-  for (int i = 0; i < 3; i++){
-    for (int j = 0; j < 3; j++){
-	  F[i][j] = T[i][j];
-	  }
-  }
+  	for (int i = 0; i < 3; i++){
+    	for (int j = 0; j < 3; j++){
+	  	F[i][j] = T[i][j];
+	  	}
+  	}
     for (int j = 2; j >= 0; j--)
 	{
-	  T[0][j] = F[k1][2];
-	  k1--;
+		T[0][j] = F[k1][2];
+		k1--;
 	}
 	for (int i = 1; i < 3; i++)
     {
-      T[i][0] = F[0][k2];
-      k2--;
+    	T[i][0] = F[0][k2];
+    	k2--;
     }
-  for (int j = 1; j < 3; j++)
+	for (int j = 1; j < 3; j++)
     {
-      T[2][j] = F[k3][0];
-      k3++;
+    	T[2][j] = F[k3][0];
+    	k3++;
     }
-  T[1][2] = F[2][1];
+  	T[1][2] = F[2][1];
 
-  int F1[3];
-  int F2[3];
+  	int F1[3];
+  	int F2[3];
 
-   switch(side){
-  		case 1:	
-	  		for(int j = 0; j < 3; j++){
-	  			F1[j] = T1[2][j];
-	  			T1[2][j] = T4[j][0];
-	  			F2[j] = T2[j][2];
-	  			T2[j][2] = F1[j];
-	  			F1[j] = T3[0][j];
-	  			T4[j][0] = F1[j];
-	  		}
-	  	case 2:
+	for(int j = 0; j < 3; j++){
+		F1[j] = T1[2][j];
+		T1[2][j] = T3[j][0];
+		F2[j] = T2[0][j];
+		T2[0][j] = T4[j][2];
+	}
+	for(int k = 2; k >= 0; k--){
+		int j = 2 - k;
+		T3[j][0] = F2[k];
+		T4[j][2] = F1[k];
+	}
 
-	  	case 3:
-	  	
-	  	case 4:
-	  	
-	  	case 5:
-	  	
-	  	case 6:
-}
 }
 
 
